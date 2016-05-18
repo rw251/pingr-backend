@@ -83,6 +83,9 @@ a {
 h1.error-message{
     color: red;
 }
+h1.success-message{
+    color: green;
+}
 ul.user-details{
     list-style: none;
 }

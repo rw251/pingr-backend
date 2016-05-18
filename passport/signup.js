@@ -21,16 +21,15 @@ module.exports = function(passport) {
           // already exists
           if (user) {
             console.log('User already exists with username: ' + username);
-            return done(null, false, req.flash('message', 'User Already Exists'));
+            return done(null, false, req.flash('error', 'User Already Exists'));
           } else {
             // if there is no user with that email
             // create the user
             var newUser = new User({
               username: username,
-              password: password
+              password: password,
+              fullname: req.body.fullname
             });
-
-//            newUser.email = req.param('email');
 
             // save the user
             newUser.save(function(err) {

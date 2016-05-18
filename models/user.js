@@ -14,6 +14,10 @@ var UserSchema = new Schema({
   password: {
     type: String,
     required: true
+  },
+  fullname: {
+    type: String,
+    required: true
   }
 });
 
@@ -43,6 +47,11 @@ UserSchema.methods.comparePassword = function(candidatePassword, cb) {
         if (err) return cb(err);
         cb(null, isMatch);
     });
+};
+
+UserSchema.methods.changePassword = function(newPassword, cb) {
+    this.password = newPassword;
+    this.save();
 };
 
 module.exports = mongoose.model('User', UserSchema);

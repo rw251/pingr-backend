@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var cp = require('../passport/change-password');
 
 var isAuthenticated = function(req, res, next) {
   // if user is authenticated in the session, call the next() to call the next request handler
@@ -9,23 +10,19 @@ var isAuthenticated = function(req, res, next) {
     return next();
   // if the user is not authenticated then redirect him to the login page
   res.redirect('/login');
-}
+};
 
 module.exports = function(passport) {
 
   /* GET Home Page */
   router.get('/', isAuthenticated, function(req, res) {
-    res.render('home', {
-      user: req.user
-    });
+    res.render('pages/home', { user: req.user });
   });
 
   /* GET login page. */
   router.get('/login', function(req, res) {
     // Display the Login page with any flash message, if any
-    res.render('index', {
-      message: req.flash('message')
-    });
+    res.render('pages/index', { message: req.flash() });
   });
 
   /* Handle Login POST */
@@ -37,9 +34,7 @@ module.exports = function(passport) {
 
   /* GET Registration Page */
   router.get('/signup', function(req, res) {
-    res.render('register', {
-      message: req.flash('message')
-    });
+    res.render('pages/register', { message: req.flash() });
   });
 
   /* Handle Registration POST */
@@ -49,19 +44,15 @@ module.exports = function(passport) {
     failureFlash: true
   }));
 
-  /* GET Registration Page */
+  /* GET Change password Page */
   router.get('/changepassword', isAuthenticated, function(req, res) {
-    res.render('changepassword', {
-      message: req.flash('message')
-    });
+    res.render('pages/changepassword', { message: req.flash() });
   });
 
-  /* Handle Registration POST */
-  router.post('/changepassword', isAuthenticated, passport.authenticate('changepassword', {
-    successRedirect: '/',
-    failureRedirect: '/changepassword',
-    failureFlash: true
-  }));
+  /* Handle Change password POST */
+  router.post('/changepassword', isAuthenticated, cp, function(req, res) {
+    res.render('pages/changepassword', { message: req.flash() });
+  });
 
   /* Handle Logout */
   router.get('/signout', function(req, res) {

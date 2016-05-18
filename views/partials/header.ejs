@@ -1,0 +1,58 @@
+<!-- views/partials/header.ejs -->
+
+<header class="top-head container-fluid hide-if-logged-out">
+
+  <nav class="navbar navbar-default navbar-fixed-top hidden-xs" role="navigation">
+    <div class="navbar-inner">
+      <div class="container">
+        <ul id="mainTab" style="width:1100px" class="nav nav-tabs nav-tabs-tall nav-wizard pull-left" role="tablist">
+          <li role="presentation" style="width:25%" class="active" data-id="overview"><a href="#overview" data-href="#overview" role="tab">OVERVIEW</a>
+            <div class="nav-arrow"></div>
+          </li>
+          <li role="presentation" style="width:25%" data-id="indicator">
+            <div class="nav-wedge"></div><a href="#indicators" data-href="#indicators" role="tab">INDICATOR</a>
+            <div class="nav-arrow"></div>
+          </li>
+          <li role="presentation" style="width:25%" data-id="patient">
+            <div class="nav-wedge"></div><a href="#patients" data-href="#patients" role="tab">PATIENT</a>
+            <div class="nav-arrow"></div>
+          </li>
+          <li role="presentation" style="width:25%" data-id="actions">
+            <div class="nav-wedge"></div><a href="#agreedactions" data-href="#agreedactions" role="tab">ACTION PLANS</a></li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+
+          <li id="file-loader">
+            <a class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Load data
+                <span class="caret"></span>
+              </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <span id="data-file-wrapper" class="btn btn-default btn-file">
+                  Load data...<input type="file" id="data-file" />
+                </span>
+              <span id="patient-file-wrapper" class="btn btn-default btn-file">
+                  Load patient lookup...<input type="file" id="patient-file" />
+                </span>
+            </ul>
+          </li>
+
+          <li>
+            <a href="#help">Help</a>
+          </li>
+
+          <li>
+            <a>Contact us</a>
+          </li>
+
+          <li>
+            <a href="/">Sign out</a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+</header>
